@@ -1,5 +1,6 @@
+package net.drosel.diplom;
 /**
- * User: Andrew
+ * net.drosel.diplom.User: Andrew
  * Date: 15.12.2015
  * Time: 21:23
  */
