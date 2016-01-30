@@ -5,22 +5,19 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-/**
- * User: Andrew
- * Date: 17.12.2015
- * Time: 14:06
- */
 public class WebInitializer implements WebApplicationInitializer {
-    @Override
-    public void onStartup(ServletContext servletContext){
-        AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
-        webApplicationContext.register(AppConfig.class);
-        webApplicationContext.setServletContext(servletContext);
-        webApplicationContext.refresh();
 
-        ServletRegistration.Dynamic servletRegistration = servletContext.addServlet("dispatcher", new DispatcherServlet(webApplicationContext));
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException{
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(AppConfig.class);
+        ctx.setServletContext(servletContext);
+        ctx.refresh();
+
+        ServletRegistration.Dynamic servletRegistration = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
         servletRegistration.addMapping("/");
         servletRegistration.setLoadOnStartup(1);
     }

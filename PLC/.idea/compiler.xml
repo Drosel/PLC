@@ -25,5 +25,8 @@
         <module name="PLC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PLC" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -21,10 +21,11 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan("net.drosel.diplom")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @EnableWebMvc
 public class AppConfig {
 
+/*
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
@@ -45,20 +46,21 @@ public class AppConfig {
     }
 
     @Bean
-    JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
         vendorAdapter.setShowSql(true);
         vendorAdapter.setGenerateDdl(false);
-        return vendorAdapter;
+        return  vendorAdapter;
     }
+*/
 
     @Bean
-    UrlBasedViewResolver urlBasedViewResolver(){
-        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-        viewResolver.setPrefix("/WEB-INF/pages/");
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setOrder(1);
-        return viewResolver;
+    public UrlBasedViewResolver urlBasedViewResolver(){
+        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setViewClass(JstlView.class);
+        resolver.setOrder(1);
+        return resolver;
     }
 }
